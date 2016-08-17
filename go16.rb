@@ -5,24 +5,19 @@ class Go16 < Formula
   mirror "https://fossies.org/linux/misc/go1.6.3.src.tar.gz"
   version "1.6.3"
   sha256 "6326aeed5f86cf18f16d6dc831405614f855e2d416a91fd3fdc334f772345b00"
-  go_version = "1.6"
-
-  bottle do
-    sha256 "54159189e4779b8c34235bd3f18c62122b4826f478a0a6c9812fbcce608849bf" => :el_capitan
-    sha256 "597524370e994f7d153e6ae20ed28a4ad9fee1ea9e2d8a7b29674699a52ae601" => :yosemite
-    sha256 "41a1322a0c302b9d7c74788f7d57cffc1296b627e77165507106412b3932d44a" => :mavericks
-  end
 
   option "without-cgo", "Build without cgo"
   option "without-godoc", "godoc will not be installed for you"
   option "without-vet", "vet will not be installed for you"
   option "without-race", "Build without race detector"
 
+  depends_on MaximumMacOSRequirement => :el_capitan
+
   conflicts_with "go", :because => "Differing versions of the same formula"
 
   resource "gotools" do
     url "https://go.googlesource.com/tools.git",
-        :branch => "release-branch.go#{go_version}",
+        :branch => "release-branch.go1.6",
         :revision => "c887be1b2ebd11663d4bf2fbca508c449172339e"
   end
 
